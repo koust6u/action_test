@@ -15,20 +15,18 @@ jobs:
           channel-id: ${{secrets.SLACK_CHANNEL_ID}}
           payload: |
             {
-              {
-              	"blocks": [
-              		{
-              			"type": "section",
-              			"text": {
-              				"type": "mrkdwn",
-              				"text": "🔔🔔🔔🔔🔔🔔🔔🔔🔔🔔\n🔔🔔🔔🔔🔔🔔🔔🔔🔔🔔\n*🔔<https://github.com/koust6u/coduo-review/pull/2|[프 람]님의 PR이 도착했어요>🔔* \n🔔🔔🔔🔔🔔🔔🔔🔔🔔🔔 \n🔔🔔🔔🔔🔔🔔🔔🔔🔔🔔\n"
-              			}
-              		},
-              		{
-              			"type": "divider"
-              		}
-              	]
-              }
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "🔔🔔🔔🔔🔔🔔🔔🔔🔔🔔\n🔔🔔🔔🔔🔔🔔🔔🔔🔔🔔\n*🔔<https://github.com/koust6u/coduo-review/pull/2|[프 람]님의 PR이 도착했어요>🔔* \n🔔🔔🔔🔔🔔🔔🔔🔔🔔🔔 \n🔔🔔🔔🔔🔔🔔🔔🔔🔔🔔\n"
+                  }
+                },
+                {
+                  "type": "divider"
+                }
+              ]
             }
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
