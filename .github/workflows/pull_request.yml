@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-lasest
+    runs-on: ubuntu-latest
     steps:
       - name: pull_request_noifiy
         id: pull_request_notify
