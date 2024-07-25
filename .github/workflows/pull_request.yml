@@ -12,7 +12,7 @@ jobs:
         id: pull_request_notify
         uses: slackapi/slack-github-action@v1.26.0
         with: 
-          channel-id: ${{variables.SLACK_CHANNEL_ID}}
+          channel-id: ${{secrets.SLACK_CHANNEL_ID}}
           payload: |
             {
               {
