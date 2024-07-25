@@ -1,0 +1,32 @@
+name: PULL REQUEST
+
+on: 
+  pull_request:
+    types: [opened]
+
+jobs:
+  build:
+    runs-on: ubuntu-lasest
+    steps:
+      - name: pull_request_noifiy
+        id: pull_request_notify
+        uses: slackapi/slack-github-action@v1.26.0
+        with: 
+          channel-id: ${{variables.SLACK_CHANNEL_ID}}
+          payload: |
+            {
+              {
+              	"blocks": [
+              		{
+              			"type": "section",
+              			"text": {
+              				"type": "mrkdwn",
+              				"text": "🔔🔔🔔🔔🔔🔔🔔🔔🔔🔔\n🔔🔔🔔🔔🔔🔔🔔🔔🔔🔔\n*🔔<https://github.com/koust6u/coduo-review/pull/2|[프 람]님의 PR이 도착했어요>🔔* \n🔔🔔🔔🔔🔔🔔🔔🔔🔔🔔 \n🔔🔔🔔🔔🔔🔔🔔🔔🔔🔔\n"
+              			}
+              		},
+              		{
+              			"type": "divider"
+              		}
+              	]
+              }
+            }
