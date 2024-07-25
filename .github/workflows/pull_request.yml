@@ -17,6 +17,7 @@ jobs:
             {
               "blocks": [
                 {
+                  "text": "⌛PR왔다 리뷰해라⌛",
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
