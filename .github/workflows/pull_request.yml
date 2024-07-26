@@ -14,11 +14,11 @@ jobs:
         with:
           script: |
             const excludeMember = ${{ github.event.pull_request.user.login }};
-            const githubVariables = ${{ vars }};
+            const githubVariables = ${{ process.env }};
             let outputString = '';
 
             for (const member in githubVariables) {
-              if (!member.startWith('SLACK') && member !== excludeMember) {
+              if (!member.startsWith('SLACK') && member !== excludeMember) {
                 outputString += `<@${member}>`;
                 }
             }
