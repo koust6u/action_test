@@ -19,7 +19,7 @@ jobs:
 
             for (const member in githubVariables) {
               if (!member.startWith('SLACK') && member !== excludeMember) {
-                outputString += `<@${{ vars['{0}', member]}}>`;
+                outputString += `<@${{ format('{0}', env.GITHUB_UID) }}>`;
                 }
             }
             console.log(`::set-output name=slack_uid_list_without_specific_name::${outputString.trim()}`);
