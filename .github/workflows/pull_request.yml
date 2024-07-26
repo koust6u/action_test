@@ -13,13 +13,13 @@ jobs:
         uses: actions/github-script@v7.0.1
         with:
           script: |
-            const excludeMember = ${{ github.event.pull_request.user.login }};
-            const githubVariables = ${{ process.env }};
+            const excludeMember = github.context.payload.pull_request.user.login;
+            const githubVariables = process.env;
             let outputString = '';
 
             for (const member in githubVariables) {
               if (!member.startsWith('SLACK') && member !== excludeMember) {
-                outputString += `<@${member}>`;
+                outputString += `<@${githubVariables[member]}> `;
                 }
             }
             console.log(`::set-output name=slack_uid_list_without_specific_name::${outputString.trim()}`);
