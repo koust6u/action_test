@@ -18,8 +18,8 @@ jobs:
             let outputString = '';
 
             for (const member in githubVariables) {
-              if (!member.startWith('SLACK') && member!== excludeMember) {
-                outputString += `<@${{member}}>`;
+              if (!member.startWith('SLACK') && member !== excludeMember) {
+                outputString += `<@${{ var[member]}}>`;
                 }
             }
             console.log(`::set-output name=slack_uid_list_without_specific_name::${outputString.trim()}`);
