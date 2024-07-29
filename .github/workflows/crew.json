@@ -1,0 +1,51 @@
+[
+	{
+		"name" : "프 람",
+		"tag": "be",
+		"githubId": "koust6u",
+		"slackId": "U07D1PWSLSG"
+	},
+	{
+		"name" : "레모네",
+		"tag" : "be",
+		"tag" : "BE",
+		"githubId": "JiHyeonL",
+		"slackId": "U07E3T9PMA4"
+	},
+	{
+		"name" : "레 디",
+		"tag" : "be",
+		"githubId": "reddevilmidzy",
+		"slackId": "U07DF0QPUKV"
+	},
+	{
+		"name" : "잉 크",
+		"tag" : "be",
+		"githubId": "yechop",
+		"slackId" : "U07E3TG6CHE"
+	},
+	{
+		"name": "켈 리",
+		"tag" : "be",
+		"githubId": "kelly6bf",
+		"slackId": "U07DSB12K99" 
+	},
+	{
+		"name" : "파슬리",
+		"tag" : "fe",
+		"githubId": "anttiey",
+		"slackId": "U07DC76UYJ1"
+	},
+	{
+		"name" : "파 란",
+		"tag" : "fe",
+		"githubId": "greetings1012",
+		"slackId" : "U07DPGSCXRA"
+	},
+	{
+		"name": "헤 시",
+		"tag" : "fe",
+		"githubId": "dle234",
+		"slackId": "U07E48NCK4G"
+	}
+]
