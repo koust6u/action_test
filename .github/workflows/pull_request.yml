@@ -16,7 +16,7 @@ jobs:
             const excludeMember = context.payload.pull_request.user.login;
             const githubVariables = context.env.koust6u;
             let outputString = '';
-
+            console.log(githubVariables);
             for (const member in githubVariables) {
               if (!member.startsWith('SLACK') && member !== excludeMember) {
                 outputString += `<@${githubVariables}> `;
