@@ -14,7 +14,7 @@ jobs:
         with:
           script: |
             const excludeMember = context.payload.pull_request.user.login;
-            const githubVariables = context.vars.KOUST6U;
+            const githubVariables = context.vars;
             let outputString = '';
 
             for (const member in githubVariables) {
