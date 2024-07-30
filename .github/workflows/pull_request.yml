@@ -91,6 +91,6 @@ jobs:
           git config --global user.name "GitHub Actions"
           git add thread.json
           git commit -m "Update thread.json with new thread data"
-          git push origin slack-nofitication-log
+          git push origin step1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
