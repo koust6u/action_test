@@ -23,15 +23,14 @@ jobs:
         with:
           script: |
             const excludeMember = context.payload.pull_request.user.login;
-            const members = toJson(env.json);
+            const members = JSON.parse(process.env.DECODED_JSON);
             let outputString = '';
-            console.log(githubVariables);
-            for (const member in members) {
-              if (member !== excludeMember) {
+            for (const member of members) {
+              if (member.name !== excludeMember) {
                 outputString += `<@${member.name}> `;
-                }
+              }
             }
-            console.log(`::set-output name=slack_uid_list_without_specific_name::${outputString.trim()}`);
+            return { slack_uid_list_without_specific_name: outputString.trim() };
           
       - name: pull_request_noifiy
         id: pull_request_notify
