@@ -13,10 +13,10 @@ jobs:
       
       - name: Decode base64 and parse JSON
         run: |
-          echo ${{secrets.CREW_INFO_JSON}} | base64 --decode > decoded.json
+          cat ${{secrets.CREW_INFO_JSON}} | base64 --decode > decoded.json
           DECODED_JSON=$(cat decoded.json)
           echo "Decoded JSON: $DECODED_JSON"
-          echo "json=$DECODED_JSON" >> $GITHUB_ENV
+          echo "json=${{toJson($DECODED_JSON)}}" >> $GITHUB_ENV
 
       - name: Extract receiver list
         id: extrart_receiver_list
