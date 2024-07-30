@@ -18,7 +18,7 @@ jobs:
           echo "CREW_INFO_JSON=$JSON_CONTENT" >> $GITHUB_ENV
 
       - name: Extract receiver list
-        id: extrart_receiver_list
+        id: extract_receiver_list
         uses: actions/github-script@v7.0.1
         with:
           script: |
