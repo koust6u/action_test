@@ -15,7 +15,6 @@ jobs:
         run: |
           echo ${{secrets.CREW_INFO_JSON}} | base64 --decode > decoded.json
           JSON_CONTENT=$(cat decoded.json | jq -c .)
-          echo "$JSON_CONTENT"
           echo "CREW_INFO_JSON=$JSON_CONTENT" >> $GITHUB_ENV
 
       - name: Extract receiver list
@@ -25,12 +24,10 @@ jobs:
           script: |
             const excludeMember = context.payload.pull_request.user.login;
             const members = JSON.parse(process.env.CREW_INFO_JSON);
-            console.log(members);
             let outputString = '';
             for (const member of members) {
               if (member.githubId !== excludeMember) {
-                outputString += `<@${member.name}> `;
-                console.log(member.name);
+                outputString += `<@${member.slackId}> `;
               }
             }
             console.log(`::set-output name=names::${outputString.trim()}`);
