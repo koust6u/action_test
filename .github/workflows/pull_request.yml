@@ -34,14 +34,15 @@ jobs:
           script: |
             const excludeMember = context.payload.pull_request.user.login;
             const members = JSON.parse(process.env.CREW_INFO_JSON);
-            const tag = members.find(entry => entry.githubId === excludeMember).tag;
+            const requester = members.find(entry => entry.githubId === excludeMember);
             let outputString = '';
             for (const member of members) {
-              if ((member.githubId !== excludeMember) && (member.tag === tag)) {
+              if ((member.githubId !== excludeMember) && (member.tag === requester.tag)) {
                 outputString += `<@${member.slackId}> `;
               }
             }
             console.log(`::set-output name=names::${outputString.trim()}`);
+            console.log(`::set-output name=requester::${requester.name}`);
             
       - name: pull_request_noifiy
         id: pull_request_notify
@@ -56,7 +57,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "*📬프람님의 PR이 도착했어요.📬*\n\n\n⚡⚡⚡⚡⚡⚡⚡⚡⚡\n*⚡<https://github.com/koust6u/coduo-review/pull/2| [프 람] 혼구멍 내러가기~>⚡* \n⚡⚡⚡⚡⚡⚡⚡⚡⚡\n\n _혼내줄 사람들: ${{steps.extract_receiver_list.outputs.names}}_ \n"
+                    "text": "*📬${{steps.extract_receiver_list.outputs.requester}}님의 PR이 도착했어요.📬*\n\n\n⚡⚡⚡⚡⚡⚡⚡⚡⚡\n*⚡<https://github.com/koust6u/coduo-review/pull/2| [프 람] 혼구멍 내러가기~>⚡* \n⚡⚡⚡⚡⚡⚡⚡⚡⚡\n\n _혼내줄 사람들: ${{steps.extract_receiver_list.outputs.names}}_ \n"
                   }
                 },
                 {
