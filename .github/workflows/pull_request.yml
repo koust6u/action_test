@@ -33,7 +33,7 @@ jobs:
                 console.log(member.name);
               }
             }
-            console.log(::set-output name=names::${outputString.trim()});
+            console.log(`::set-output name=names::${outputString.trim()}`);
             
       - name: pull_request_noifiy
         id: pull_request_notify
