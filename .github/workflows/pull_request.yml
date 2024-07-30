@@ -23,7 +23,7 @@ jobs:
         with:
           script: |
             const excludeMember = context.payload.pull_request.user.login;
-            const members = JSON.parse(process.env.DECODED_JSON);
+            const members = JSON.parse(process.env.CREW_INFO_JSON);
             let outputString = '';
             for (const member of members) {
               if (member.name !== excludeMember) {
