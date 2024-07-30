@@ -33,7 +33,7 @@ jobs:
         
           echo "PR_URL=${PR_URL}" >> $GITHUB_ENV
           echo "PR_AUTHOR=${AUTHOR}" >> $GITHUB_ENV
-          echp "REVIEW_AUTHOR=${{ github.event.review.user.id }}" >> $GITHUB_ENV
+          echo "REVIEW_AUTHOR=${{ github.event.review.user.id }}" >> $GITHUB_ENV
           echo "THREAD_TS=${THREAD_TS}" >> $GITHUB_ENV
 
 
