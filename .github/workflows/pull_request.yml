@@ -8,24 +8,32 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Decode base64 and parse JSON
+        run: |
+          echo ${{secrets.CREW_INFO_JSON}} | base64 --decode > decoded.json
+          DECODED_JSON=$(cat decoded.json)
+          echo "Decoded JSON: $DECODED_JSON"
+          echo "json=$DECODED_JSON" >> $GITHUB_ENV
+
       - name: Extract receiver list
         id: extrart_receiver_list
         uses: actions/github-script@v7.0.1
         with:
           script: |
             const excludeMember = context.payload.pull_request.user.login;
-            const githubVariables = vars.KOUST6U;
+            const members = toJson(env.json);
             let outputString = '';
             console.log(githubVariables);
-            for (const member in githubVariables) {
-              if (!member.startsWith('SLACK') && member !== excludeMember) {
-                outputString += `<@${githubVariables}> `;
+            for (const member in members) {
+              if (member !== excludeMember) {
+                outputString += `<@${member.name}> `;
                 }
             }
             console.log(`::set-output name=slack_uid_list_without_specific_name::${outputString.trim()}`);
           
-
-        
       - name: pull_request_noifiy
         id: pull_request_notify
         uses: slackapi/slack-github-action@v1.26.0
