@@ -26,7 +26,7 @@ jobs:
             const members = JSON.parse(process.env.CREW_INFO_JSON);
             let outputString = '';
             for (const member of members) {
-              if (member.name !== excludeMember) {
+              if (member.githubId !== excludeMember) {
                 outputString += `<@${member.name}> `;
               }
             }
