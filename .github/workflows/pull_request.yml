@@ -24,9 +24,10 @@ jobs:
           script: |
             const excludeMember = context.payload.pull_request.user.login;
             const members = JSON.parse(process.env.CREW_INFO_JSON);
+            const tag = members.find(entry => entry.githubId === excludeMember).tag;
             let outputString = '';
             for (const member of members) {
-              if (member.githubId !== excludeMember) {
+              if ((member.githubId !== excludeMember) && (member.tag === tag)) {
                 outputString += `<@${member.slackId}> `;
               }
             }
