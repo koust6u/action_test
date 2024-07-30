@@ -24,7 +24,7 @@ jobs:
           script: |
             const excludeMember = context.payload.pull_request.user.login;
             const members = JSON.parse(process.env.CREW_INFO_JSON);
-            console.log(members);
+            console.log(members[0].name);
             let outputString = '';
             for (const member of members) {
               if (member.name !== excludeMember) {
