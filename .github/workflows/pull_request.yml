@@ -74,7 +74,8 @@ jobs:
             --arg author "${{ github.event.pull_request.user.login }}" \
             --arg thread_ts "${{ steps.pull_request_notify.outputs.ts }}" \
             '{pr_url: $url, author: $author, thread_ts: $thread_ts}')
-            
+
+          mkdir -p .github/workflows
           cd .github/workflows/
   
           if [ -f thread.json ]; then
