@@ -28,6 +28,7 @@ jobs:
             for (const member of members) {
               if (member.githubId !== excludeMember) {
                 outputString += `<@${member.name}> `;
+                console.log(member.name);
               }
             }
             return { slack_uid_list_without_specific_name: outputString.trim() };
