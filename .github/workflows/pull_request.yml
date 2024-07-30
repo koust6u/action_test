@@ -89,7 +89,7 @@ jobs:
         run: |
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Actions"
-          git add thread.json
+          git add .github/workflows/thread.json
           git commit -m "Update thread.json with new thread data"
           git push origin step1
         env:
