@@ -10,6 +10,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          ref: slack-log
         
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -72,6 +74,8 @@ jobs:
             --arg author "${{ github.event.pull_request.user.login }}" \
             --arg thread_ts "${{ steps.pull_request_notify.outputs.ts }}" \
             '{pr_url: $url, author: $author, thread_ts: $thread_ts}')
+
+          cd .github/workflows
   
           if [ -f thread.json ]; then
             jq --argjson new "$NEW_THREAD_JSON" '. += [$new]' thread.json > thread.tmp.json
@@ -79,3 +83,13 @@ jobs:
           else
             echo "[$NEW_THREAD_JSON]" > thread.json
           fi
+
+      - name: Commit updated thread.json
+        run: |
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Actions"
+          git add thread.json
+          git commit -m "Update thread.json with new thread data"
+          git push origin slack-nofitication-log
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
