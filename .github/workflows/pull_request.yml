@@ -34,7 +34,7 @@ jobs:
               }
             }
             return { slack_uid_list_without_specific_name: outputString.trim() };
-          
+            
       - name: pull_request_noifiy
         id: pull_request_notify
         uses: slackapi/slack-github-action@v1.26.0
@@ -48,7 +48,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "*📬프람님의 PR이 도착했어요.📬*\n\n\n⚡⚡⚡⚡⚡⚡⚡⚡⚡\n*⚡<https://github.com/koust6u/coduo-review/pull/2| [프 람] 혼구멍 내러가기~>⚡* \n⚡⚡⚡⚡⚡⚡⚡⚡⚡\n\n _혼내줄 사람들: <@${{steps.extract_receiver_list.output.slack_uid_list_without_specific_name}}>_\n"
+                    "text": "*📬프람님의 PR이 도착했어요.📬*\n\n\n⚡⚡⚡⚡⚡⚡⚡⚡⚡\n*⚡<https://github.com/koust6u/coduo-review/pull/2| [프 람] 혼구멍 내러가기~>⚡* \n⚡⚡⚡⚡⚡⚡⚡⚡⚡\n\n _혼내줄 사람들: <@${{steps.extract_receiver_list.outputs.slack_uid_list_without_specific_name}}>_\n"
                   }
                 },
                 {
