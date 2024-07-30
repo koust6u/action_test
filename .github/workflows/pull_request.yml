@@ -15,6 +15,7 @@ jobs:
         run: |
           echo ${{secrets.CREW_INFO_JSON}} | base64 --decode > decoded.json
           JSON_CONTENT=$(cat decoded.json | jq -c .)
+          echo "$JSON_CONTENT"
           echo "CREW_INFO_JSON=$JSON_CONTENT" >> $GITHUB_ENV
 
       - name: Extract receiver list
