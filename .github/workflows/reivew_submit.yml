@@ -67,7 +67,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "📫<@${{ steps.extract_member.outputs.reviewee_slack_id }}>님 PR에 대한 ${{steps.extract_member.outputs.reviewer_slack_name}}님의 리뷰가 도착했어요.📫"
+                    "text": "📫<@${{ steps.extract_member.outputs.reviewee_slack_id }}>님 PR에 대한 `${{steps.extract_member.outputs.reviewer_slack_name}}`님의 리뷰가 도착했어요.📫"
                   }
                 }
               ],
