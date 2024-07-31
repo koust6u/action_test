@@ -11,7 +11,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          ref: ${{ secrets.SLACK_BRANCH }}
+          ref: ${{ vars.SLACK_BRANCH }}
 
       - name: Install jq
         run: sudo apt-get install jq
