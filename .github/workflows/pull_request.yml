@@ -11,12 +11,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          ref: step1
-        
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
+          ref: ${{ vars.SLACK_BRANCH}}
   
       - name: Install jq
         run: sudo apt-get install jq
@@ -92,6 +87,6 @@ jobs:
           git config --global user.name "GitHub Actions"
           git add .github/logs/thread.json
           git commit -m "Update thread.json with new thread data"
-          git push origin step1
+          git push origin ${{ vars.SLACK_BRANCH }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
