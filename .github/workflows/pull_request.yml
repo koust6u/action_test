@@ -11,7 +11,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          ref: ${{ vars.SLACK_BRANCH}}
+          ref: ${{ secrets.SLACK_BRANCH}}
   
       - name: Install jq
         run: sudo apt-get install jq
@@ -87,6 +87,6 @@ jobs:
           git config --global user.name "GitHub Actions"
           git add .github/logs/thread.json
           git commit -m "Update thread.json with new thread data"
-          git push origin ${{ vars.SLACK_BRANCH }}
+          git push origin ${{ secrects.SLACK_BRANCH }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
