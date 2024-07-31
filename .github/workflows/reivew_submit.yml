@@ -32,7 +32,7 @@ jobs:
           THREAD_TS=$(echo "$TARGET_OBJECT" | jq -r '.thread_ts')
 
           echo "PR_AUTHOR=${AUTHOR}"
-          echo "REVIEW_AUTHOR=${{ github.event.review.user.id }}"
+          echo "REVIEW_AUTHOR=${{ github.event.review.user.login }}"
         
           echo "PR_URL=${PR_URL}" >> $GITHUB_ENV
           echo "PR_AUTHOR=${AUTHOR}" >> $GITHUB_ENV
